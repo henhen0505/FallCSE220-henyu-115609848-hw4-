@@ -7,7 +7,7 @@
  *  Feel free to use the functions that you made in strPtr.c
 */
 
-int strgLen(const char *s) {
+int strgLen2(const char *s) {
     if (s==NULL)
     {
         return -1;
@@ -28,7 +28,7 @@ int encryptCaesar(const char *plaintext, char *ciphertext, int key) {
     {
         return -2;
     }
-    if(strgLen(plaintext) == 0)
+    if(strgLen2(plaintext) == 0)
     {
         char undef[] = "undefined__EOM__";
         int j;
@@ -42,7 +42,7 @@ int encryptCaesar(const char *plaintext, char *ciphertext, int key) {
     }
 
     int i = 0;
-    for(i=0; i<strgLen(plaintext); i++)
+    for(i=0; i<strgLen2(plaintext); i++)
     {
         if(plaintext[i]>64 && plaintext[i]<91)
         {
@@ -90,7 +90,7 @@ int decryptCaesar(const char *ciphertext, char *plaintext, int key) {
         return -2;
     }
 
-    if(strgLen(plaintext) == 0) 
+    if(strgLen2(plaintext) == 0) 
     {
         return 0;
     }
