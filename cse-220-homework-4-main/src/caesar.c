@@ -64,6 +64,11 @@ int decryptCaesar(const char *ciphertext, char *plaintext, int key) {
         return -2;
     }
 
+    if(strgLen(plaintext) == 0) 
+    {
+        return 0;
+    }
+
 
     int eom = -1;
     for(int i=0; ciphertext[i]!=0;i++)
