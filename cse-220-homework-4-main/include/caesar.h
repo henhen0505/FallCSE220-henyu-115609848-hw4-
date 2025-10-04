@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+
+int strgLen(const char *s);
 /**
  * @brief encrypts a message with caesar cypher strategy using a given key. 
  * @param plaintext  a null-terminated string to be encrypted. The string contains only ASCII characters 
