@@ -215,6 +215,7 @@ void strgReverseLetters(char *s) {
  * test cases for the TAs.
  * Comment out if using criterion to test.
  */
+ 
 int main(int argc, char* argv[]){
     (void)argc;
     (void)argv;
