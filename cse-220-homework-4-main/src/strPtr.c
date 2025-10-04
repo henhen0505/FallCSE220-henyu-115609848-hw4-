@@ -23,18 +23,18 @@ int strgLen(const char *s) {
 }
 
 
-void strgCopy(char *dest, char *src) {
+void strgCopy(char *s, char *d) {
    
-    if(src==NULL || dest == NULL)
+    if(s==NULL || d == NULL)
     {
         return;
     }
     int i;
-    for(i=0; src[i]!=0; i++)
+    for(i=0; s[i]!=0; i++)
     {
-        dest[i]=src[i];
+        d[i]=s[i];
     }
-    dest[i] = 0;
+    d[i] = 0;
 }
 
 
