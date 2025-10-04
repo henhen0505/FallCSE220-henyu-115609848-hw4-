@@ -16,7 +16,7 @@ int strgLen(const char* s);
 /**
  * @brief copies the content of string s (source) to d (destination).
  */
-void strgCopy(char* s, char* d);
+void strgCopy(char* d, char* s);
 
 /**
  * @brief for each character in the string, if it is an alphabet, reverse the case of the character (upper to lower, and lower to upper). Keep the non-alphabet characters as is.

@@ -23,7 +23,7 @@ int strgLen(const char *s) {
 }
 
 
-void strgCopy(char *s, char *d) {
+void strgCopy(char *d, char *s) {
    
     if(s==NULL || d == NULL)
     {
@@ -81,10 +81,10 @@ void strgChangeCase(char *s) {
     }
 
 
-   if(s[1]!=0)
+   if(s[0]!=0)
    {
         i++;
-        if(s[i-1]<48 || s[i-1]>57)
+        if(i>0&&(s[i-1]<48 || s[i-1]>57))
         {
             if(s[i] >64 && s[i] <91)
             {
@@ -134,14 +134,16 @@ void strgInterleave(char *s1, char *s2, char *d) {
         return;
     }
     int i = 0;
+    int i2 =0;
     int j = 0;
-    while(s1[i]!=0 && s2[i]!=0)
+    while(s1[i]!=0 && s2[i2]!=0)
     {
         d[j] = s1[i];
         j++;
-        d[j] = s2[i];
+        d[j] = s2[i2];
         j++;
         i++;
+        i2++;
     }
 
 
@@ -153,10 +155,10 @@ void strgInterleave(char *s1, char *s2, char *d) {
     }
 
 
-    while(s2[i]!=0)
+    while(s2[i2]!=0)
     {
-        d[j]=s2[i];
-        i++;
+        d[j]=s2[i2];
+        i2++;
         j++;
     }
 
@@ -216,9 +218,9 @@ void strgReverseLetters(char *s) {
  * Comment out if using criterion to test.
  */
  
-int main(int argc, char* argv[]){
-    (void)argc;
-    (void)argv;
+//int main(int argc, char* argv[]){
+   // (void)argc;
+ //   (void)argv;
     /** CREATE TEST CASES HERE **/
     // strgLen - 10 test cases
    // printf("%d\n", strgLen("Stony Brook"));        // expect 11
@@ -293,5 +295,5 @@ int main(int argc, char* argv[]){
     //char v10[] = "aB-Cd"; strgReverseLetters(v10); printf("%s\n", v10);         // expect dC-Ba
    
     /** ---------------------- **/
-    return 0;
-}
+  //  return 0;
+//}

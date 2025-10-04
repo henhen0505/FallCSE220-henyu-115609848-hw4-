@@ -24,6 +24,7 @@ int strgLen2(const char *s) {
 }
 
 int encryptCaesar(const char *plaintext, char *ciphertext, int key) {
+    int count =0;
     if(plaintext==NULL || ciphertext==NULL)
     {
         return -2;
@@ -48,18 +49,20 @@ int encryptCaesar(const char *plaintext, char *ciphertext, int key) {
         {
             int shift = (i+key) %26;
             ciphertext[i] = ((plaintext[i]-65+shift)%26) +65;
+            count++;
         }
         else if (plaintext[i]>96 && plaintext[i]<123)
         {
             int shift = (i+key) %26;
             ciphertext[i] = ((plaintext[i]-97+shift)%26) +97;
-
+            count++;
 
         }
         else if(plaintext[i]>47 && plaintext[i]<58)
         {
             int shift = (key + 2*i)%10;
             ciphertext[i] = ((plaintext[i]-48+shift)%10) + 48;
+            count++;
         }
         else
         {
@@ -78,8 +81,7 @@ int encryptCaesar(const char *plaintext, char *ciphertext, int key) {
     ciphertext[i+7] = 0;
 
 
-    return i;
-
+    return count;
 
 }
 
@@ -95,7 +97,7 @@ int decryptCaesar(const char *ciphertext, char *plaintext, int key) {
         return 0;
     }
 
-
+    int count = 0;
     int eom = -1;
     for(int i=0; ciphertext[i]!=0;i++)
     {
@@ -113,6 +115,11 @@ int decryptCaesar(const char *ciphertext, char *plaintext, int key) {
         return -1;
     }
 
+    if(eom == 0) 
+    {
+        return 0;
+    }
+
 
     for(int i =0; i<eom; i++)
     {
@@ -120,18 +127,20 @@ int decryptCaesar(const char *ciphertext, char *plaintext, int key) {
         {
             int shift = (i+key) %26;
             plaintext[i] = ((ciphertext[i]-65-shift + 26)%26) +65;
+            count++;
         }
         else if (ciphertext[i]>96 && ciphertext[i]<123)
         {
             int shift = (i+key) %26;
             plaintext[i] = ((ciphertext[i]-97-shift+26)%26) +97;
-
+            count++;
 
         }
         else if(ciphertext[i]>47 && ciphertext[i]<58)
         {
             int shift = (key + 2*i)%10;
             plaintext[i] = ((ciphertext[i]-48-shift+10)%10) + 48;
+            count++;
         }
         else
         {
@@ -143,7 +152,7 @@ int decryptCaesar(const char *ciphertext, char *plaintext, int key) {
     plaintext[eom] = 0;
 
 
-    return eom;
+    return count;
 }
 
 
@@ -158,9 +167,9 @@ int decryptCaesar(const char *ciphertext, char *plaintext, int key) {
  * test cases for the TAs.
  * Comment out if using criterion to test.
  */
-int main(int argc, char* argv[]){
-    (void)argc;
-    (void)argv;
+//int main(int argc, char* argv[]){
+  //  (void)argc;
+    //(void)argv;
     /** CREATE TEST CASES HERE **/
 
 
@@ -190,5 +199,5 @@ int main(int argc, char* argv[]){
     //char p10[50]; printf("%d\n", decryptCaesar("CT__EOM____EOM__", p10, 0)); printf("%s\n", p10);  // expect 2, CS (stops at first EOM)                                                 // expect -2
        
     /** ---------------------- **/
-    return 0;
-}
+   // return 0;
+//}
