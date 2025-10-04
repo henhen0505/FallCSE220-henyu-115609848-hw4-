@@ -28,7 +28,18 @@ int encryptCaesar(const char *plaintext, char *ciphertext, int key) {
     {
         return -2;
     }
+    if(strgLen(plaintext) == 0)
+    {
+        char undef[] = "undefined__EOM__";
+        int j;
+        for(j = 0; undef[j] != '\0'; j++) 
+        {
+            ciphertext[j] = undef[j];
+        }
+        ciphertext[j] = '\0';
 
+        return 0;
+    }
 
     int i = 0;
     for(i=0; i<strgLen(plaintext); i++)
@@ -89,7 +100,7 @@ int decryptCaesar(const char *ciphertext, char *plaintext, int key) {
     for(int i=0; ciphertext[i]!=0;i++)
     {
         if(ciphertext[i] == '_' &&ciphertext[i+1] == '_'&& ciphertext[i+2] == 'E'&&ciphertext[i+3] == 'O'
-            &&ciphertext[i+4] == 'M'&&ciphertext[i+5] == '_'&&ciphertext[i+6] == '_'&&ciphertext[i+7] == 0)
+            &&ciphertext[i+4] == 'M'&&ciphertext[i+5] == '_'&&ciphertext[i+6] == '_')
         {
             eom = i;
             break;
